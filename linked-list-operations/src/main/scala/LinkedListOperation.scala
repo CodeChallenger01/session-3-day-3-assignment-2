@@ -61,20 +61,15 @@ class LinkedList[A] {
   }
 
   //this method is used to traverse the element
-  def searchElement(value: A): Option[Node[A]] = {
-    def search(node: Node[A]): Option[Node[A]] = {
-      if (node == null) {
-        None
+  def searchElement(data: A): Boolean = {
+    var current = head
+    while (current != null) {
+      if (current.data == data) {
+        return true
       }
-      else if (node.data == value) {
-        Some(node)
-      }
-      else {
-        search(node.next)
-      }
+      current = current.next
     }
-
-    search(head)
+    false
   }
 
   //this method is used to traverse the element
