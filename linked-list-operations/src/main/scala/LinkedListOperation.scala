@@ -4,38 +4,60 @@ class LinkedList[A] {
 
   //This method is used to insert the element
   def insertElement(value: A): Unit = {
-    def insert(node: Node[A]): Unit = {
-      if (node.next == null) {
-        node.next = new Node[A](value, null)
-      } else {
-        insert(node.next)
+    try{
+      if(value==0 || value==null) throw new RuntimeException("Invalid Value")
+      else{
+        def insert(node: Node[A]): Unit = {
+          if (node.next == null) {
+            node.next = new Node[A](value, null)
+          }
+          else {
+            insert(node.next)
+          }
+        }
+
+        if (head == null) {
+          head = new Node(value, null)
+        }
+        else {
+          insert(head)
+        }
       }
     }
-
-    if (head == null) {
-      head = new Node(value, null)
-    } else {
-      insert(head)
+    catch{
+      case ex: RuntimeException=> "Exception resolved"
     }
+
   }
 
   //this method is used to delete the element
   def deleteElement(value: A): Unit = {
-    def delete(node: Node[A]): Unit = {
-      if (node == null || node.next == null) return
+    try{
+      if(value==0 || value==null) throw new RuntimeException("Invalid Input")
+      else{
+        def delete(node: Node[A]): Unit = {
+          if (node == null || node.next == null) return
 
-      if (node.next.data == value) {
-        node.next = node.next.next
-      } else {
-        delete(node.next)
+          if (node.next.data == value) {
+            node.next = node.next.next
+          }
+          else {
+            delete(node.next)
+          }
+        }
+
+        if (head != null && head.data == value) {
+          head = head.next
+        }
+        else {
+          delete(head)
+        }
       }
     }
-
-    if (head != null && head.data == value) {
-      head = head.next
-    } else {
-      delete(head)
+    catch {
+      case ex => new RuntimeException("Invalid Input")
     }
+
   }
 
   //this method is used to traverse the element
@@ -43,9 +65,11 @@ class LinkedList[A] {
     def search(node: Node[A]): Option[Node[A]] = {
       if (node == null) {
         None
-      } else if (node.data == value) {
+      }
+      else if (node.data == value) {
         Some(node)
-      } else {
+      }
+      else {
         search(node.next)
       }
     }
@@ -54,15 +78,12 @@ class LinkedList[A] {
   }
 
   //this method is used to traverse the element
-  def traverseElement(fun: A => Unit): Unit = {
-    def traverse(node: Node[A]): Unit = {
-      if (node != null) {
-        fun(node.data)
-        traverse(node.next)
-      }
+  def traverseElement(): Unit = {
+    var current = head
+    while(current!=null){
+      print(current.data)
+      current=current.next
     }
-
-    traverse(head)
   }
   //To check link is present or not
   def hasElements: Boolean = {
@@ -72,5 +93,8 @@ class LinkedList[A] {
 }
 
 object Link extends App {
-
+  val int = new LinkedList[Int]
+  int.insertElement(2)
+  int.insertElement(3)
+  int.traverseElement()
 }
