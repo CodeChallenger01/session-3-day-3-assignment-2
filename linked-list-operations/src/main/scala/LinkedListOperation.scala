@@ -93,8 +93,4 @@ class LinkedList[A] {
 }
 
 object Link extends App {
-  val int = new LinkedList[Int]
-  int.insertElement(2)
-  int.insertElement(3)
-  int.traverseElement()
 }
