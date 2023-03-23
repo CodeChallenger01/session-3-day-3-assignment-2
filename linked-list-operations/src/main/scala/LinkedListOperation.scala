@@ -39,18 +39,6 @@ class LinkedList[A] {
   }
 
   //this method is used to traverse the element
-  def traverseElement(fun: A => Unit): Unit = {
-    def traverse(node: Node[A]): Unit = {
-      if (node != null) {
-        fun(node.data)
-        traverse(node.next)
-      }
-    }
-
-    traverse(head)
-  }
-
-  //this method is used to traverse the element
   def searchElement(value: A): Option[Node[A]] = {
     def search(node: Node[A]): Option[Node[A]] = {
       if (node == null) {
@@ -65,6 +53,17 @@ class LinkedList[A] {
     search(head)
   }
 
+  //this method is used to traverse the element
+  def traverseElement(fun: A => Unit): Unit = {
+    def traverse(node: Node[A]): Unit = {
+      if (node != null) {
+        fun(node.data)
+        traverse(node.next)
+      }
+    }
+
+    traverse(head)
+  }
   //To check link is present or not
   def hasElements: Boolean = {
     if (head == null) false
