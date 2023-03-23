@@ -26,9 +26,9 @@ class LinkedListOperationTest extends AnyFlatSpec with Matchers {
     assert(intObject.hasElements)
   }
 
-  "it" should "not match with searched element" in {
+  "it" should " match with searched element" in {
     val search = intObject.searchElement(21)
-    assert(search != 21)
+    assert(search == true)
   }
 
   "it" should "match with deleted element" in {
@@ -64,7 +64,7 @@ class LinkedListOperationTest extends AnyFlatSpec with Matchers {
 
   "it" should "not match with searched element of string" in {
     val search = stringObject.searchElement("Rahul")
-    assert(search != "Rahul")
+    assert(search != true)
   }
 
   "it" should "match with deleted element of string" in {
@@ -97,9 +97,9 @@ class LinkedListOperationTest extends AnyFlatSpec with Matchers {
     assert(longObject.hasElements)
   }
 
-  "it" should "not match with searched element of long integer" in {
+  "it" should "match with searched element of long integer" in {
     val search = longObject.searchElement(21l)
-    assert(search != 21)
+    assert(search == true)
   }
 
   "it" should "match with deleted element of long integer" in {
