@@ -21,16 +21,26 @@ class LinkedListOperationTest extends AnyFlatSpec with Matchers {
     intObject.insertElement(25)
     intObject.head.data == 25
   }
+
   "it" should "match with has elements" in {
     assert(intObject.hasElements)
   }
+
   "it" should "not match with searched element" in {
     val search = intObject.searchElement(21)
     assert(search != 21)
   }
+
   "it" should "match with deleted element" in {
     println(intObject.deleteElement(21))
   }
+
+  "it " should "match with traverse element" in{
+    val firstElement=intObject.insertElement(21)
+    val list=intObject.traverseElement()
+    assert(list==firstElement)
+  }
+
 
 
   //TEST CASES OF STRING DATA TYPE
@@ -47,15 +57,24 @@ class LinkedListOperationTest extends AnyFlatSpec with Matchers {
     stringObject.insertElement("Rohan")
     stringObject.head.data == "Rohan"
   }
+
   "it" should "match with has elements of string" in {
     assert(stringObject.hasElements)
   }
+
   "it" should "not match with searched element of string" in {
     val search = stringObject.searchElement("Rahul")
     assert(search != "Rahul")
   }
+
   "it" should "match with deleted element of string" in {
     println(stringObject.deleteElement("Rohan"))
+  }
+
+  "it " should "match with traverse element of string" in {
+    val firstElement = stringObject.insertElement("Manish")
+    val list = intObject.traverseElement()
+    assert(list == firstElement)
   }
 
 
@@ -73,15 +92,24 @@ class LinkedListOperationTest extends AnyFlatSpec with Matchers {
     longObject.insertElement(25l)
     intObject.head.data == 25l
   }
+
   "it" should "match with has elements of long integer" in {
     assert(longObject.hasElements)
   }
+
   "it" should "not match with searched element of long integer" in {
     val search = longObject.searchElement(21l)
     assert(search != 21)
   }
+
   "it" should "match with deleted element of long integer" in {
     println(longObject.deleteElement(21l))
+  }
+
+  "it " should "match with traverse element of long" in {
+    val firstElement = longObject.insertElement(2l)
+    val list = longObject.traverseElement()
+    assert(list == firstElement)
   }
 
 }
